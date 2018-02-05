@@ -1,1 +1,1 @@
-require('./gulp/tasks/compress.js');
+require("./gulp/tasks/replace.js");
