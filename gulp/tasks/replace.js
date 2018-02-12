@@ -6,9 +6,12 @@ const open = require("open");
 const imgSource = "./input";
 const imgDest = "./output";
 
+gulp.task("copy", () => {
+  gulp.src("./originals/**/*.html").pipe(gulp.dest("./replace"));
+});
+
 gulp.task("replace", () => {
   gulp
-    // .src("./replace/**/*.html")
     .src("./replace/**/*.html", { base: "./" })
     .pipe(
       replace(
@@ -38,7 +41,7 @@ gulp.task("replace", () => {
       replace(
         /.*<!--.*footer(.|\n)+?(?=<table border="0")/gi,
         `
-          <!-- Footer (Replaced) -->
+          <!-- Footer Removed (Replaced) -->
           <tr>
             <td align="center" valign="top">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -78,8 +81,31 @@ gulp.task("replace", () => {
         `,
       ),
     )
-    // .pipe(gulp.dest("modified/"));
     .pipe(gulp.dest("./"));
 });
 
-gulp.task("default", ["replace"]);
+gulp.task("insert", () => {
+  gulp
+    .src("./replace/**/*.html", { base: "./" })
+    .pipe(
+      replace(
+        /.*(?=<\/head>)/gi,
+        `
+          <!-- Google Analytics -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101892464-1"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+        
+            gtag('config', 'UA-101892464-1');
+          </script>
+        `,
+      ),
+    )
+    .pipe(gulp.dest("./"));
+});
+
+// gulp.task("del", () => {
+//   gulp.src("./replace/**/*.DS_Store").pipe(gulp.dest(del()));
+// });

@@ -8,7 +8,7 @@
     "drag": "echo 'Confirming input and output directories..' && npm run input && npm run output && open input",
     "input": "if [ ! -d 'input' ]; then mkdir input; fi",
     "output": "if [ ! -d 'output' ]; then mkdir output; fi",
-    "start": "gulp replace:ads"
+    "start": "gulp copy && gulp replace && gulp insert"
   },
   "license": "ISC",
   "devDependencies": {
