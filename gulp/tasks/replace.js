@@ -100,6 +100,46 @@ gulp.task("insert", () => {
         
             gtag('config', 'UA-101892464-1');
           </script>
+
+          <!-- Google Adsense -->
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        `,
+      ),
+    )
+    .pipe(
+      replace(
+        /.*(?=<!-- discoveries)/gi,
+        `       <!-- Adsense (Inserted)) -->
+                <tr>
+                  <td align="center" valign="top" style="overflow: hidden; padding: 13px 0;">
+                    <ins class="adsbygoogle"
+                      style="display:block; text-align:center; width: 100%; min-width: 320px; max-width: 640px; height: 100px;"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-9724963759311479"
+                      data-ad-slot="9873879387"></ins>
+                  </td>
+                </tr>
+        `,
+      ),
+    )
+    .pipe(
+      replace(
+        /.*(?=<!-- eat this)/gi,
+        `       <!-- Adsense (Inserted)) -->
+                <tr>
+                  <td align="center" valign="top" style="overflow: hidden; padding: 13px 0;">
+                    <ins class="adsbygoogle"
+                      style="display:block; text-align:center; width: 100%; min-width: 320px; max-width: 640px; height: 100px;"
+                      data-ad-layout="in-article"
+                      data-ad-format="fluid"
+                      data-ad-client="ca-pub-9724963759311479"
+                      data-ad-slot="8999781416"></ins>
+                  </td>
+                </tr>
         `,
       ),
     )
