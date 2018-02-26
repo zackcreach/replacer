@@ -111,8 +111,8 @@ gulp.task("insert", () => {
     )
     .pipe(
       replace(
-        /.*(?=<!-- discoveries)/gi,
-        `       <!-- Adsense (Inserted)) -->
+        /.*(?=<!-- discoveries -->)/gi,
+        `       <!-- Adsense (Inserted) -->
                 <tr>
                   <td align="center" valign="top" style="overflow: hidden; padding: 13px 0;">
                     <ins class="adsbygoogle"
@@ -128,8 +128,8 @@ gulp.task("insert", () => {
     )
     .pipe(
       replace(
-        /.*(?=<!-- eat this)/gi,
-        `       <!-- Adsense (Inserted)) -->
+        /.*(?=<!-- discoverers of location -->)/gi,
+        `       <!-- Adsense (Inserted) -->
                 <tr>
                   <td align="center" valign="top" style="overflow: hidden; padding: 13px 0;">
                     <ins class="adsbygoogle"
