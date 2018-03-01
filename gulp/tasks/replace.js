@@ -89,7 +89,7 @@ gulp.task("insert", () => {
     .src("./replace/**/*.html", { base: "./" })
     .pipe(
       replace(
-        /.*(?=<\/head>)/gi,
+        /.*(<\/xml><\!\[endif\]-->\n).*(<\/head>)/gi,
         `
           <!-- Google Analytics -->
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101892464-1"></script>
@@ -100,46 +100,70 @@ gulp.task("insert", () => {
         
             gtag('config', 'UA-101892464-1');
           </script>
-
-          <!-- Google Adsense -->
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
+        </head>
         `,
       ),
     )
     .pipe(
       replace(
-        /.*(?=<!-- discoveries -->)/gi,
+        /.*(<!-- discoveries -->)/gi,
         `       <!-- Adsense (Inserted) -->
                 <tr>
-                  <td align="center" valign="top" style="overflow: hidden; padding: 13px 0;">
+                  <td align="center" valign="top" style="overflow: hidden; padding: 0 0 26px 0;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <ins class="adsbygoogle"
-                      style="display:block; text-align:center; width: 100%; min-width: 320px; max-width: 640px; height: 100px;"
-                      data-ad-layout="in-article"
-                      data-ad-format="fluid"
+                      style="display:block; width: 100%; min-width: 320px; max-width: 640px; height: 100px;"
                       data-ad-client="ca-pub-9724963759311479"
-                      data-ad-slot="9873879387"></ins>
+                      data-ad-slot="8999781416"
+                      data-ad-format="auto"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                   </td>
                 </tr>
+                <!-- discoveries (Ad inserted above) -->
         `,
       ),
     )
     .pipe(
       replace(
-        /.*(?=<!-- discoverers of location -->)/gi,
+        /.*(<!-- eat this -->)/gi,
         `       <!-- Adsense (Inserted) -->
                 <tr>
-                  <td align="center" valign="top" style="overflow: hidden; padding: 13px 0;">
+                  <td align="center" valign="top" style="overflow: hidden; padding: 0 0 26px 0;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <ins class="adsbygoogle"
-                      style="display:block; text-align:center; width: 100%; min-width: 320px; max-width: 640px; height: 100px;"
-                      data-ad-layout="in-article"
-                      data-ad-format="fluid"
+                      style="display:block; width: 100%; min-width: 320px; max-width: 640px; height: 100px;"
                       data-ad-client="ca-pub-9724963759311479"
-                      data-ad-slot="8999781416"></ins>
+                      data-ad-slot="5236396264"
+                      data-ad-format="auto"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                   </td>
                 </tr>
+                <!-- discoveries (Ad inserted above) -->
+        `,
+      ),
+    )
+    .pipe(
+      replace(
+        /.*(<!-- discoverers of location -->)/gi,
+        `       <!-- Adsense (Inserted) -->
+                <tr>
+                  <td align="center" valign="top" style="overflow: hidden; padding: 0 0 26px 0;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <ins class="adsbygoogle"
+                      style="display:block; width: 100%; min-width: 320px; max-width: 640px; height: 100px;"
+                      data-ad-client="ca-pub-9724963759311479"
+                      data-ad-slot="7116454144"
+                      data-ad-format="auto"></ins>
+                    <script>
+                      (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </td>
+                </tr>
+                <!-- discoverers of location (Ad inserted above) -->
         `,
       ),
     )
