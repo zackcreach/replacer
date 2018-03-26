@@ -39,7 +39,7 @@ gulp.task("replace", () => {
     )
     .pipe(
       replace(
-        /.*<!--.*footer(.|\n)+?(?=<table border="0")/gi,
+        /.*<!--.*footer(.|\n)+?(?=<\/body>)/gi,
         `
           <!-- Footer Removed (Replaced) -->
           <tr>
